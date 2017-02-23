@@ -32,6 +32,6 @@ module.exports={
   },
   sign_in:function(req,res,next){
     var token = jwt.sign({username: req.body.username}, process.env.SECRET);
-    res.send({ token: token })
+    res.send(token)
   }
 }

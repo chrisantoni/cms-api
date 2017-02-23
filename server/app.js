@@ -26,12 +26,12 @@ mongoose.connect(configDB.url)
 passport.use('local', new localStrategy(function(username, password, done){
   User.findOne({ username: username }, function(err, data){
     if (!data) {
-      done(null, false, {message: 'incorect username'})
+      done(null, false)
     }else{
       if (passwordHash.verify(password, data.password)) {
         done(null, data)
       }else{
-        done(null, false, {message: 'incorect password'})
+        done(null, false)
       }
     }
   })

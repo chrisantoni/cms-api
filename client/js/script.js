@@ -23,8 +23,14 @@
           username: $('#username').val(),
           password: $('#password').val()
         },
-        success: function(data) {
+        success: function(data,err) {
+          if(data.username == username){
+            alert('username already been taken')
+          }else if(data.username == ""){
+            alert('username cannot be blank')
+          }else{
             alert("Register success! Now Login!")
+          }
         }
       })
   }
