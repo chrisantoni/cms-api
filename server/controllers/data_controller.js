@@ -16,7 +16,7 @@ module.exports={
     }else if(req.body.frequency){
       Data.find({frequency: req.body.frequency}, function(err,frequency) {
         if(err)throw err
-        res.send(data)
+        res.send(frequency)
       })
     }else if(req.body.letter && req.body.frequency){
       var input_letter = req.body.letter
