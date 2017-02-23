@@ -6,14 +6,19 @@ var jwt = require('jsonwebtoken');
 module.exports={
   verify_token: function(req, res, next){
     if (req.headers.token == 'null') {
-      res.json("you don't have access")
+      res.send({msg:"unauthorized"})
     }else{
-      if (jwt.verify(req.headers.token, 'secret')) {
+      if (jwt.verify(req.headers.token,process.env.SECRET)) {
         next()
       }else {
-        res.json("token sudah expried")
+        res.send({msg:"token expired"})
       }
     }
+  },
+  get_all_user: function (req, res, next) {
+    User.find({}).then(function (users) {
+      res.send(users)
+    })
   },
   sign_up:function(req,res){
     var newUser = User({
@@ -22,11 +27,11 @@ module.exports={
     })
     newUser.save(function(err, data){
       if (err) throw err
-      res.json(data)
+      res.send(data)
     })
   },
   sign_in:function(req,res,next){
-    var token = jwt.sign({username: req.body.username}, 'secret');
+    var token = jwt.sign({username: req.body.username}, process.env.SECRET);
     res.send({ token: token })
   }
 }

@@ -21,6 +21,9 @@ router.post('/datadate',data_date_controller.create_data)
 router.put('/datadate',data_date_controller.update_data)
 router.delete('/datadate',data_date_controller.delete_data)
 /* User Controller */
+router.post('/login', passport.authenticate('local'),user_controller.sign_in)
+router.post('/register',user_controller.sign_up)
+router.get('/user',user_controller.get_all_user)
 
 // router.get('/alluser', user_controller.verify_token, function(req, res, next) {
 //   modelUser.find({}, function(err, data){
@@ -29,9 +32,7 @@ router.delete('/datadate',data_date_controller.delete_data)
 //   })
 // });
 
-router.post('/login', passport.authenticate('local'),user_controller.sign_in)
 
-router.post('/register',user_controller.sign_up)
 
 
 module.exports = router;

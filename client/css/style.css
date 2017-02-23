@@ -4,3 +4,14 @@
   margin-top: 10px;
   margin-left: 270px;
 }
+#list_users{
+  background-color: #e2e0e0;
+  height: 100px;
+}
+
+#list_users h1{
+  text-align: center;
+  position: relative;
+  left:-440px;
+  top: 30px;
+}
