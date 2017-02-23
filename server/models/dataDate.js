@@ -11,4 +11,4 @@ var dataDateSchema = new Schema({
 var DataDate = mongoose.model('DataDate', dataDateSchema);
 
 // make this available to our users in our Node applications
-module.exports = dataDateSchema;
+module.exports = DataDate;

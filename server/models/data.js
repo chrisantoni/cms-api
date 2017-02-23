@@ -11,4 +11,4 @@ var dataSchema = new Schema({
 var Data = mongoose.model('Data', dataSchema);
 
 // make this available to our users in our Node applications
-module.exports = dataSchema;
+module.exports = Data;
